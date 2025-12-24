@@ -2,7 +2,6 @@
 #include <string.h>
 #include "system_structs.h"
 
-
 int loadaccounts(Account acc[], int max)
 {
     int fields;
