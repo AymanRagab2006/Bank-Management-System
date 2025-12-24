@@ -32,15 +32,31 @@ void printAccounts(Account accounts[], int size){
         printf("Invalid choice!\n");
         return;
     }
+    char monthName[20];
 
     printf("Account List:\n");
     for(int i = 0; i < size; i++){
+
+        if(accounts[i].dateOpened.month == 1) strcpy(monthName, "January");
+        else if(accounts[i].dateOpened.month == 2) strcpy(monthName, "February");
+        else if(accounts[i].dateOpened.month == 3) strcpy(monthName, "March");
+        else if(accounts[i].dateOpened.month == 4) strcpy(monthName, "April");
+        else if(accounts[i].dateOpened.month == 5) strcpy(monthName, "May");
+        else if(accounts[i].dateOpened.month == 6) strcpy(monthName, "June");
+        else if(accounts[i].dateOpened.month == 7) strcpy(monthName, "July");
+        else if(accounts[i].dateOpened.month == 8) strcpy(monthName, "August");
+        else if(accounts[i].dateOpened.month == 9) strcpy(monthName, "September");
+        else if(accounts[i].dateOpened.month == 10) strcpy(monthName, "October");
+        else if(accounts[i].dateOpened.month == 11) strcpy(monthName, "November");
+        else if(accounts[i].dateOpened.month == 12) strcpy(monthName, "December");
+        else strcpy(monthName, "Invalid Month");
+
         printf("Account Number: %d\n", accounts[i].accountNumber);
         printf("Name: %s\n", accounts[i].name);
         printf("Email: %s\n", accounts[i].email);
         printf("Mobile Number: %s\n", accounts[i].mobileNumber);
         printf("Balance: %.2f\n", accounts[i].balance);
-        printf("Date Opened: %02d/%04d\n", accounts[i].dateOpened.month, accounts[i].dateOpened.year);
+        printf("Date Opened: %s %d\n", monthName, accounts[i].dateOpened.year);
         printf("Status: %s\n", accounts[i].status ? "Active" : "Inactive");
         printf("-----------------------\n");
     }
