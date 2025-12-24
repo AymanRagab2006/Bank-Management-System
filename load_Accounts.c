@@ -33,11 +33,3 @@ int loadaccounts(Account acc[], int max)
     fclose(f);
     return count;
 }
-int main()
-{
-    Account acc[100];
-    int total = loadaccounts(acc, 100);
-
-    printf("loaded %i accounts\n", total);
-    return 0;
-}
