@@ -8,10 +8,10 @@
 
 int main()
 {
-    Account accounts[100]; // array to hold accounts
+    Account accounts[100]; 
     Account *foundAccount;
     int coun = 0;
-    loadaccounts(accounts, 100, &coun); // Load accounts from file
+    loadaccounts(accounts, 100, &coun); 
     searchByAccountNumber(accounts, coun, 1000000001, &foundAccount);
     if (foundAccount != NULL)
     {
