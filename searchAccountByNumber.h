@@ -2,6 +2,6 @@
 #define searchByAccountNumber_H
 #include "system_structs.h"
 
-int searchByAccountNumber(Account acc[], int count, long target);
+void searchByAccountNumber(Account acc[], int count, int target, Account **result);
 
 #endif
