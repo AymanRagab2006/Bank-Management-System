@@ -17,5 +17,5 @@ typedef struct
     Date dateOpened;
     char status[10]; // 1 for active, 0 for inactive
 } Account;
-
+void printAccount(const Account *acc);
 #endif
