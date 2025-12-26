@@ -166,39 +166,5 @@ void AddAccount(Account acc[], int *count)
     (*count)++;
 }
 
-int main()
-{
-    Account accounts[MAX_ACCOUNTS];
-    int count = 0;
-
-    printf("===== Bank Account Management =====\n");
-
-    char choice;
-    do
-    {
-        printf("\nDo you want to add a new account? (y/n): ");
-        scanf(" %c", &choice);
-
-        if (choice == 'y' || choice == 'Y')
-        {
-            AddAccount(accounts, &count);
-        }
-
-    } while (choice == 'y' || choice == 'Y');
-
-    printf("\nYou have added %d account(s).\n", count);
-
-    for (int i = 0; i < count; i++)
-    {
-        printf("\nAccount %d:\n", i + 1);
-        printf("Number: %lld\n", accounts[i].accountNumber);
-        printf("Name: %s\n", accounts[i].name);
-        printf("Email: %s\n", accounts[i].email);
-        printf("Mobile: %s\n", accounts[i].mobileNumber);
-        printf("Balance: %.2f\n", accounts[i].balance);
-        printf("Date Opened: %d/%d\n", accounts[i].dateOpened.month, accounts[i].dateOpened.year);
-        printf("Status: %s\n", accounts[i].status);
-    }
-
     return 0;
 }
