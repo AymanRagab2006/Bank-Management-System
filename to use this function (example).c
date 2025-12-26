@@ -4,15 +4,15 @@
 #include <ctype.h>
 #include "system_structs.h"
 #include "load_Accounts.h"
-#include "searchByAccountNumber.h"
+#include "searchAccount.h"
 
 int main()
 {
     Account accounts[100]; // array to hold accounts
-
     int coun = 0;
     loadaccounts(accounts, 100, &coun);
-    Account *found = searchByAccountNumber(accounts, 2, 1000000001);
+    printf("Loaded %d accounts.\n", coun);
+    Account *found = searchByAccountName(accounts, coun, "John Doe");
     if (found != NULL)
     {
         char choice;
