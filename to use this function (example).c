@@ -8,12 +8,12 @@
 
 int main()
 {
-    Account accounts[100]; 
-    Account *foundAccount;
+    Account accounts[100]; // array to hold accounts
+
     int coun = 0;
-    loadaccounts(accounts, 100, &coun); 
-    searchByAccountNumber(accounts, coun, 1000000001, &foundAccount);
-    if (foundAccount != NULL)
+    loadaccounts(accounts, 100, &coun);
+    Account *found = searchByAccountNumber(accounts, 2, 1000000001);
+    if (found != NULL)
     {
         char choice;
         printf("Account found. Print details? (y/n): ");
@@ -21,7 +21,7 @@ int main()
 
         if (choice == 'y' || choice == 'Y')
         {
-            printAccount(foundAccount);
+            printAccount(found);
         }
     }
     else
