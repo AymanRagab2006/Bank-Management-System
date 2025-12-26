@@ -1,22 +1,36 @@
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
-#define MAX_ACCOUNTS 100
-#define ACCOUNT_NUMBER_LENGTH 20
-int main()
-{
-    int n, i;
-    char accountNumbers[MAX_ACCOUNTS][ACCOUNT_NUMBER_LENGTH];
+#include "system_structs.h"
 
-    printf("Enter number of accounts: ");
-    scanf("%d", &n);
-    getchar();
-    for (i = 0; i < n; i++)
+void searchByAccountNumber(Account acc[], int count, long target)
+{
+    int found = 0;
+
+    for (int i = 0; i < count; i++)
     {
-        printf("Enter account number %d: ", i + 1);
-        fgets(accountNumbers[i], ACCOUNT_NUMBER_LENGTH, stdin);
-        accountNumbers[i][strcspn(accountNumbers[i], "\n")] = 0;
+        if (acc[i].accountNumber == target)
+        {
+            printf("Account Number : %ld\n", acc[i].accountNumber);
+            printf("Name           : %s\n", acc[i].name);
+            printf("E-mail         : %s\n", acc[i].email);
+            printf("Balance        : %.2f $\n", acc[i].balance);
+            printf("Mobile         : %s\n", acc[i].mobileNumber);
+
+            char *months[] = {
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"};
+
+            printf("Date Opened    : %s %d\n", months[acc[i].dateOpened.month - 1], acc[i].dateOpened.year);
+
+            printf("Status         : %s\n", acc[i].status);
+
+            found = 1;
+            break;
+        }
     }
 
-    return 0;
+    if (!found)
+    {
+        printf("Account not found.\n");
+    }
 }
