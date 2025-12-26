@@ -10,7 +10,7 @@ void searchByAccountNumber(Account acc[], int count, int target, Account **resul
     {
         if (acc[i].accountNumber == target)
         {
-            *result = &acc[i]; // store address of found account
+            *result = &acc[i]; 
             return;
         }
     }
