@@ -1,11 +1,5 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<ctype.h>
-#include"system_structs.h"
 
-
-Account *DeleteByAccountNumber(int *newcount)
+void DeleteByAccountNumber(int *newcount)
 {
     Account acc;
     int count = 0 ;
@@ -15,9 +9,9 @@ Account *DeleteByAccountNumber(int *newcount)
     if(f==NULL)
     {
         printf("Error,File Not Founded.");
-        exit(1) ;
+        return ;
     }
-    while(fscanf(f,"%lld,%49[^,],%49[^,],%f,%11[^,],%d-%d,%9s",
+    while(fscanf(f,"%lld,%49[^,],%49[^,],%f,%11[^,],%d-%d, %9s",
     &acc.accountNumber,
     acc.name,
     acc.email,
@@ -33,7 +27,7 @@ Account *DeleteByAccountNumber(int *newcount)
             printf("Memory Error");
             free(Accounts);
             fclose(f);
-            exit(1);
+            return;
         }
         else 
         {   
@@ -48,16 +42,13 @@ Account *DeleteByAccountNumber(int *newcount)
     if(found==NULL)
     {
         printf("Error Messege..Account Number Not Found.\n");
+        return ;
     }
     else 
     {   
         printf("Account Founded\n");
-        char chioce[3];
-        printf("Are You Want Delete that Account [y/n] : ");
-        scanf(" %2s",chioce);
         newaccounts = malloc(count * sizeof(Account));
-    if(strcmp(chioce,"Y")==0||strcmp(chioce,"y")==0)
-    { 
+    
        if(found->balance==0.0)
        {    
         
@@ -80,13 +71,7 @@ Account *DeleteByAccountNumber(int *newcount)
         }
         }
         }
-        else if(strcmp(chioce,"N")==0||strcmp(chioce,"n")==0)
-        {
-            Quit();
-        }
-    }
     *newcount = j ;
-    fclose(f);
-    return newaccounts;
-}
-
+    SaveAccountsToFile("accounts.txt",newaccounts,*newcount);    
+    }
+    
