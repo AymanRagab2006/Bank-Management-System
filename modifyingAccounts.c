@@ -13,7 +13,7 @@ void modifyAccount(Account accounts[], int *count)
     printf("Enter account number: ");
     scanf("%lld", &acc_num);
     loadaccounts(temp, 100, count);
-    Account *acc = searchByAccountNumber(temp, *count, acc_num, &found);
+    Account *acc = searchByAccountNumber(temp, *count, acc_num);
     if (!acc)
     {
         printf("Account not found.\n");
