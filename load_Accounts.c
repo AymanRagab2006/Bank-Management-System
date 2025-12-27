@@ -4,16 +4,12 @@
 
 void loadaccounts(Account acc[], int max, int *count)
 {
-    FILE *f = fopen("accountss.txt", "r");
+    FILE *f = fopen("accounts.txt", "r");
     if (!f)
     {
         printf("Error: file not found!\n");
         *count = 0;
         return;
-    }
-    else
-    {
-        printf("File opened successfully.\n");
     }
 
     *count = 0;
@@ -22,11 +18,12 @@ void loadaccounts(Account acc[], int max, int *count)
     {
         line[strcspn(line, "\r\n")] = 0; // remove newline
 
-        int fields = sscanf(line, "%lld,%49[^,],%49[^,],%10[^,],%f,%d,%d,%9s",
+        int fields = sscanf(line,
+                            "%lld,%49[^,],%49[^,],%lld,%f,%d%*[-,]%d,%9s",
                             &acc[*count].accountNumber,
                             acc[*count].name,
                             acc[*count].email,
-                            acc[*count].mobileNumber,
+                            &acc[*count].mobileNumber,
                             &acc[*count].balance,
                             &acc[*count].dateOpened.month,
                             &acc[*count].dateOpened.year,
@@ -34,6 +31,10 @@ void loadaccounts(Account acc[], int max, int *count)
 
         if (fields == 8)
             (*count)++;
+        if (fields != 8)
+        {
+            printf("Skipped line (fields=%d): %s\n", fields, line);
+        }
     }
     fclose(f);
 }
