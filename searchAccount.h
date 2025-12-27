@@ -2,7 +2,7 @@
 #define searchAccount_H
 #include "system_structs.h"
 
-Account *searchByAccountNumber(Account acc[], int count, int target);
+Account *searchByAccountNumber(Account acc[], int count, long long target);
 Account *searchByAccountName(Account acc[], int count, char target[]);
 
-#endiff
+#endif
