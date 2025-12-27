@@ -1,5 +1,5 @@
-#ifndef searchByAccountNumber_H
-#define searchByAccountNumber_H
+#ifndef searchAccount_H
+#define searchAccount_H
 #include "system_structs.h"
 
 Account *searchByAccountNumber(Account acc[], int count, int target);
