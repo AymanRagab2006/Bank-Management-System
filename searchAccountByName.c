@@ -1,12 +1,16 @@
 #include <stdio.h>
 #include <string.h>
 #include "system_structs.h"
-void searchByAccountName(Account acc[], int count, char target[])
+void searchByAccountName(Account acc[], int count)
 {
-    int cal = 0;
+    const char *target = "ali";
     for (int i = 0; i < count; i++)
     {
-        if (strcmp(acc[i].name, target) == 0)
+        char firstName[50];
+        // Extract first word from name
+        sscanf(acc[i].name, "%49s", firstName);
+
+        if (strcmp(firstName, target) == 0)
         {
             printAccount(&acc[i]);
             printf("________________________________\n");
@@ -15,10 +19,10 @@ void searchByAccountName(Account acc[], int count, char target[])
 }
 int main()
 {
-    int coun = 0;
     Account accounts[100];
-    loadaccounts(accounts, 100, &coun);
-    printf("Loaded %d accounts.\n", coun);
-    searchByAccountName(accounts, coun, "ali");
+    int count = 0;
+    // char target[] = "ali3";
+    loadaccounts(accounts, 100, &count);
+    searchByAccountName(accounts, count);
     return 0;
 }
