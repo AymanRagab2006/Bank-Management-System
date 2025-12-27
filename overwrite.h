@@ -1,5 +1,6 @@
-#ifndef withdraw_H
-#define withdraw_H
+#ifndef overwrite_H
+#define overwrite_H
 #include "system_structs.h"
-void withdraw(Account accounts[], int *count, int *user);
+
+void SaveAccountsToFile(const char *accounts, Account temp[], int count);
 #endif
