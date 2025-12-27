@@ -40,10 +40,19 @@ void modifyAccount(Account accounts[], int *count)
     printf("Email updated successfully.\n");
 
     printf("Enter new Mobile Number: ");
-    long long newMobile;
-    scanf("%lld", &newMobile);
-    temp[found].mobileNumber = newMobile;
+    char newMobile[11];
+    scanf("%s", newMobile);
+    strncpy(temp[found].mobileNumber, newMobile, sizeof(temp[found].mobileNumber) - 1);
+    temp[found].mobileNumber[sizeof(temp[found].mobileNumber) - 1] = '\0';
     printf("Mobile Number updated successfully.\n");
 
     SaveAccountsToFile("accounts.txt", temp, *count);
+}
+int main()
+{
+    Account accounts[100];
+    int count = 0;
+    loadaccounts(accounts, MAX_ACCOUNTS, &count);
+    modifyAccount(accounts, &count);
+    return 0;
 }
