@@ -48,11 +48,3 @@ void modifyAccount(Account accounts[], int *count)
 
     SaveAccountsToFile("accounts.txt", temp, *count);
 }
-int main()
-{
-    Account accounts[100];
-    int count = 0;
-    loadaccounts(accounts, MAX_ACCOUNTS, &count);
-    modifyAccount(accounts, &count);
-    return 0;
-}
