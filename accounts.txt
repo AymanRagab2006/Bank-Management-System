@@ -1,0 +1,3 @@
+1234567891012,Ahmed Hussein,yehia@gmail.com,18000.00,01111111111,12-2025, active
+1234567891011,Ayman Ragab,ayman@gmail.com,134700.70,01097968038,12-2025, active
+1234567891013,Ali Mohamed,ali@gmail.com,25000.00,01222222222,12-2025, active

@@ -22,6 +22,7 @@ void SaveAccountsToFile(Account temp[], int count)
         set_color(COLOR_YELLOW);
         printf("Changes not saved.\n");
         reset_color();
+        
         return;
     }
 
@@ -34,12 +35,14 @@ void SaveAccountsToFile(Account temp[], int count)
         set_color(COLOR_RED);
         printf("Error opening file for saving!\n");
         reset_color();
+
         return;
     }
 
-    set_color(COLOR_YELLOW);
+    /*set_color(COLOR_YELLOW);
     printf("Writing %d accounts to file...\n", count);
-    reset_color();
+    reset_color();*/
+
     for (int i = 0; i < count; i++)
     {
         // Fixed format to match loading function

@@ -14,10 +14,7 @@ void Transfer()
     int flag = 1;
     float Amount;
     long long AccountNumber1, AccountNumber2;
-    /*printf("Please Enter The Sender Account Number : ");
-    scanf("%lld", &AccountNumber1);
-    printf("Please Enter The Receiver Account Number : ");
-    scanf("%lld", &AccountNumber2);*/
+    
     Account *P = searchByAccountNumber(tempAccounts, tempAccountsCount); // sender
     Account *A = searchByAccountNumber(tempAccounts, tempAccountsCount); // receiver
     if (P == NULL)

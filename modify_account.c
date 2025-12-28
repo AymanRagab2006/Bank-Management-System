@@ -53,7 +53,7 @@ void modifyAccount(Account accounts[], int *count)
     set_color(COLOR_CYAN);
     printf("Enter new Mobile Number: ");
     reset_color();
-    char newMobile[11];
+    char newMobile[12];
     scanf("%s", newMobile);
     strncpy(acc->mobileNumber, newMobile, sizeof(acc->mobileNumber) - 1);
     acc->mobileNumber[sizeof(acc->mobileNumber) - 1] = '\0';

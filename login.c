@@ -8,6 +8,7 @@
 void Quit()
 {
     exit(0);
+    return;
 }
 
 int login()

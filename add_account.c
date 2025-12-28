@@ -32,6 +32,13 @@ int NumChecker(long long accnum)
 
 void AddAccount(Account acc[], int *count)
 {
+    if(accountsCount >= MAX_ACCOUNTS)
+    {
+        set_color(COLOR_RED);
+        printf("Cannot add more accounts. Maximum limit reached.\n");
+        reset_color();
+        return;
+    }
     copyAccountData(tempAccounts, accounts, accountsCount);
     tempAccountsCount = accountsCount;
 

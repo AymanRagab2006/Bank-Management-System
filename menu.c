@@ -10,6 +10,12 @@
 #include "delete_multiple.h"
 #include "delete.h"
 #include "modify_account.h"
+#include "textgenerator.h"
+#include "withdraw.h"
+#include "deposit.h"
+#include "transfer.h"
+#include "trans_rep.h"
+
 
 void displayMenu() {
     set_color(COLOR_GREEN);
@@ -48,7 +54,7 @@ void displayMenu() {
             set_color(COLOR_RED);
             printf("Invalid choice. Please select a valid option.\n");
             reset_color();
-            displayMenu();
+            continue;
         }
 
         switch(choice) {
@@ -77,19 +83,24 @@ void displayMenu() {
                 break;
             }
             case 7: {
-                // Withdraw Amount
+                withdraw(accounts, accountsCount);
                 break;
             }
             case 8: {
-                // Deposit Amount
+                deposit(accounts, accountsCount);
                 break;
             }
             case 9: {
-                // Transfer Amount
+                Transfer();
                 break;
             }
             case 10: {
-                // Transaction Report
+                long long accNum;
+                set_color(COLOR_CYAN);
+                printf("Enter account number: ");
+                reset_color();
+                scanf("%lld", &accNum);
+                transactionReport(accNum);
                 break;
             }
             case 11: {
