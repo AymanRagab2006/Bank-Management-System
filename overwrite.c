@@ -28,16 +28,15 @@ void SaveAccountsToFile(const char *accounts, Account temp[], int count)
     printf("Writing %d accounts to file...\n", count);
     for (int i = 0; i < count; i++)
     {
-        // Fixed format to match loading function
-        fprintf(fp, "%lld,%s,%s,%.2f,%lld,%d-%d, %s\n",
+        fprintf(fp, "%lld,%s,%s,%.2f,%s,%d-%d, %s\n",
                 temp[i].accountNumber,
                 temp[i].name,
                 temp[i].email,
-                temp[i].balance,      // balance comes before mobileNumber
-                temp[i].mobileNumber, // mobileNumber comes after balance
+                temp[i].balance,
+                temp[i].mobileNumber,
                 temp[i].dateOpened.month,
-                temp[i].dateOpened.year, // use dash, not comma
-                temp[i].status);         // space before status
+                temp[i].dateOpened.year,
+                temp[i].status);
     }
     printf("All changes saved successfully!\n");
     fclose(fp);
