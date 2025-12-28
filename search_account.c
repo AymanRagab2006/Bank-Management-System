@@ -55,7 +55,7 @@ void printAccount(Account *acc)
 Account *searchByAccountNumber(Account acc[], int count)
 {
     set_color(COLOR_CYAN);
-    printf("Enter account number to search: ");
+    printf("Enter account number: ");
     reset_color();
     long long target;
     scanf("%lld", &target);

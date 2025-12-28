@@ -23,6 +23,14 @@ void DeleteByAccountNumber(Account acc[], int *count)
     {
         if (tempAccounts[i].accountNumber == target)
         {
+            if (tempAccounts[i].balance != 0)
+            {
+                set_color(COLOR_RED);
+                printf("Cannot delete account with non-zero balance.\n");
+                reset_color();
+                return;
+            }
+            
             found = 1;
             for (int j = i; j < tempAccountsCount - 1; j++)
             {
