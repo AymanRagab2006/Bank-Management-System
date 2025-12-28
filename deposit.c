@@ -4,10 +4,13 @@
 #include "load_Accounts.h"
 #include "searchAccount.h"
 #include "overwrite.h"
+#include "deposit.h"
+#include "textgenerator.h"
 #define MAX_ACCOUNTS 100
 
-void deposit(Account accounts[], int *count, int *user)
+void deposit(Account accounts[], int *count)
 {
+    char operation[] = "deposit";
     Account temp[MAX_ACCOUNTS];
     loadaccounts(temp, MAX_ACCOUNTS, count);
     int found = 0;
@@ -21,9 +24,8 @@ void deposit(Account accounts[], int *count, int *user)
     float amount;
     printf("Enter account number: ");
     scanf("%lld", &acc_num);
-    Account *acc = searchByAccountNumber(temp, *count, acc_num, &found);
+    Account *acc = searchByAccountNumber(temp, *count, acc_num);
     printf("Found count: %d\n", found);
-    *user = found;
 
     if (!acc)
     {
@@ -46,6 +48,17 @@ void deposit(Account accounts[], int *count, int *user)
         return;
     }
     acc->balance += amount;
-    printf("Deposit successful. New balance: %.2f\n", temp[found].balance);
+    printf("Deposit successful. New balance: %.2f\n", acc->balance);
     SaveAccountsToFile("accounts.txt", temp, *count);
+    report(operation, acc->accountNumber, (int)amount, acc->name);
+}
+
+int main()
+{
+    Account accounts[100];
+    int count = 0;
+    int user = 0;
+    loadaccounts(accounts, MAX_ACCOUNTS, &count);
+    deposit(accounts, &count);
+    return 0;
 }
