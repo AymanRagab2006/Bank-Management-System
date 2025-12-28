@@ -53,12 +53,4 @@ void deposit(Account accounts[], int *count)
     report(operation, acc->accountNumber, (int)amount, acc->name);
 }
 
-int main()
-{
-    Account accounts[100];
-    int count = 0;
-    int user = 0;
-    loadaccounts(accounts, MAX_ACCOUNTS, &count);
-    deposit(accounts, &count);
-    return 0;
-}
+
