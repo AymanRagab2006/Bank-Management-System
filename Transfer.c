@@ -115,8 +115,4 @@ void Transer()
     }
     free(Ac);
 }
-int main()
-{
-    Transer();
-    return 0;
-}
+
