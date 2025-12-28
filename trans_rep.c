@@ -11,7 +11,7 @@
 #include <time.h>
 #include "textgenerator.h"
 #define MAX_ACCOUNTS 100
-void transactionReport(Account acc[], const char *operationType, long long account_number)
+void transactionReport(long long account_number)
 {
     char filename[100];
     sprintf(filename, "%lld.txt", account_number);
@@ -27,15 +27,24 @@ void transactionReport(Account acc[], const char *operationType, long long accou
     char op_str[50];
     int amount;
     char date[50];
+    char extra[50];
     printf("Transaction history for account %lld:\n", account_number);
-    while (fgets(line, sizeof(line), file))
+    int count = 0;
+
+    while (count < 5 && fgets(line, sizeof(line), file))
     {
-        if (strstr(line, "Operation:") != NULL) // Check if the line contains "Operation:"
+        if (strstr(line, "Operation:") != NULL)
         {
-            if (sscanf(line, "Operation: %[^|]| amount: %d | Date: %[^\n]", op_str, &amount, date) == 3)
+            int n = sscanf(line, "Operation: %[^|]| amount: %d | Date: %[^|]| %[^\n]", op_str, &amount, date, extra);
+
+            printf("Operation: %s, Amount: %d, Date: %s", op_str, amount, date);
+
+            if (n == 4) // extra field exists
             {
-                printf("Operation: %s, Amount: %d, Date: %s\n", op_str, amount, date);
+                printf(", %s", extra);
             }
+            printf("\n");
+            count++;
         }
     }
 
